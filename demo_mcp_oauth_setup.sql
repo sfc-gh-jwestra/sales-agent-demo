@@ -23,7 +23,7 @@ SET SNOWFLAKE_ACCOUNT_LOCATOR = 'sfsenorthamerica-jwestra-aws1';  -- org-account
 
 SET TARGET_DATABASE = 'DEMO_DB';
 SET TARGET_SCHEMA = 'SALES';
-SET WAREHOUSE = 'COMPUTE_WH';
+SET WAREHOUSE = 'DEMO_WH';
 SET AGENT_ROLE = 'SYSADMIN';                    -- Role that will use the agent
 SET OAUTH_REDIRECT_PORT = '3334';               -- Port for mcp-remote OAuth callback
 

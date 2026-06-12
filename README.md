@@ -42,7 +42,7 @@ Claude Code  ──stdio──>  mcp-remote  ──HTTP + OAuth──>  Snowflak
 | `SNOWFLAKE_ACCOUNT_LOCATOR` | Org-account with hyphens (not underscores) | `sfsenorthamerica-jwestra-aws1` |
 | `TARGET_DATABASE` | Database containing the sales data | `DEMO_DB` |
 | `TARGET_SCHEMA` | Schema containing the sales tables | `SALES` |
-| `WAREHOUSE` | Warehouse for query execution | `COMPUTE_WH` |
+| `WAREHOUSE` | Warehouse for query execution | `DEMO_WH` |
 | `AGENT_ROLE` | Role that will access the agent/MCP server | `SYSADMIN` |
 | `OAUTH_REDIRECT_PORT` | Local port for mcp-remote OAuth callback | `3334` |
 

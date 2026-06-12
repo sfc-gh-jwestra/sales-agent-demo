@@ -6,7 +6,7 @@ entities:
       name: SALES_DASHBOARD
       database: DEMO_DB
       schema: SALES
-    query_warehouse: CORTEX_SEARCH_TUTORIAL_WH
+    query_warehouse: DEMO_WH
     runtime_name: SYSTEM$ST_CONTAINER_RUNTIME_PY3_11
     compute_pool: SYSTEM_COMPUTE_POOL_CPU
     external_access_integrations:

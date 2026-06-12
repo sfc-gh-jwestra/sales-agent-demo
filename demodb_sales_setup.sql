@@ -17,8 +17,15 @@ SET TARGET_SCHEMA = 'SALES';
 USE ROLE ACCOUNTADMIN;
 
 -- =============================================================================
--- STEP 1: Create Database and Schema
+-- STEP 1: Create Warehouse, Database, and Schema
 -- =============================================================================
+
+CREATE WAREHOUSE IF NOT EXISTS DEMO_WH
+  WAREHOUSE_SIZE = 'XSMALL'
+  AUTO_SUSPEND = 60
+  AUTO_RESUME = TRUE;
+
+USE WAREHOUSE DEMO_WH;
 
 CREATE DATABASE IF NOT EXISTS IDENTIFIER($TARGET_DATABASE);
 CREATE SCHEMA IF NOT EXISTS IDENTIFIER($TARGET_DATABASE || '.' || $TARGET_SCHEMA);
@@ -398,7 +405,7 @@ FROM SPECIFICATION $spec$
       "semantic_view": "DEMO_DB.SALES.SALES_ANALYTICS",
       "execution_environment": {
         "type": "warehouse",
-        "warehouse": "",
+        "warehouse": "DEMO_WH",
         "query_timeout": 60
       }
     }
