@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "snowflake-sales-agent": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://sfsenorthamerica-jwestra-aws1.snowflakecomputing.com/api/v2/databases/demo_db/schemas/sales/mcp-servers/sales_mcp_server",
+        "3334",
+        "--static-oauth-client-metadata",
+        "{\"scope\": \"session:role:SYSADMIN\"}",
+        "--static-oauth-client-info",
+        "{\"client_id\": \"Cv/0Mvlc9whhAT2zEw1W5f9ANZI=\", \"client_secret\": \"oJpnd7idZJYQil6zxlROecP44bNGBhaJtBxIsA2YHeA=\"}"
+      ]
+    }
+  }
+}

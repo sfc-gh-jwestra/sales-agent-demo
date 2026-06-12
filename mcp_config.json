@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "snowflake-sales-agent": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://{{SNOWFLAKE_ACCOUNT_LOCATOR}}.snowflakecomputing.com/api/v2/databases/{{TARGET_DATABASE}}/schemas/{{TARGET_SCHEMA}}/mcp-servers/sales_mcp_server",
+        "{{OAUTH_REDIRECT_PORT}}",
+        "--static-oauth-client-metadata",
+        "{\"scope\": \"session:role:{{AGENT_ROLE}}\"}",
+        "--static-oauth-client-info",
+        "{\"client_id\": \"{{OAUTH_CLIENT_ID}}\", \"client_secret\": \"{{OAUTH_CLIENT_SECRET}}\"}"
+      ]
+    }
+  }
+}

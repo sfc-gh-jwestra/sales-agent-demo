@@ -1,0 +1,11 @@
+[project]
+name = "sales-dashboard"
+version = "1.0.0"
+description = "Sales analytics dashboard powered by Snowflake - Top customers, markets, and trends"
+requires-python = ">=3.11"
+dependencies = [
+    "altair>=5.5.0",
+    "pandas>=2.2.3",
+    "snowflake-connector-python>=3.3.0",
+    "streamlit[snowflake]>=1.54.0",
+]

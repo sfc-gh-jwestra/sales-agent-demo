@@ -1,0 +1,17 @@
+definition_version: 2
+entities:
+  SALES_DASHBOARD:
+    type: streamlit
+    identifier:
+      name: SALES_DASHBOARD
+      database: DEMO_DB
+      schema: SALES
+    query_warehouse: CORTEX_SEARCH_TUTORIAL_WH
+    runtime_name: SYSTEM$ST_CONTAINER_RUNTIME_PY3_11
+    compute_pool: SYSTEM_COMPUTE_POOL_CPU
+    external_access_integrations:
+      - PYPI_ACCESS
+    main_file: streamlit_app.py
+    artifacts:
+      - streamlit_app.py
+      - pyproject.toml
