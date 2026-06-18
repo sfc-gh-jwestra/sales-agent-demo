@@ -5,3 +5,4 @@ __pycache__/
 output/
 .claude/settings.local.json
 .claude/settings.json
+.mcp.json

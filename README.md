@@ -31,8 +31,8 @@ Claude Code  ──stdio──>  mcp-remote  ──HTTP + OAuth──>  Snowflak
 |------|---------|
 | `demodb_sales_setup.sql` | Creates database, tables, data, semantic view, and Cortex Agent |
 | `demo_mcp_oauth_setup.sql` | Creates MCP Server, OAuth integration, and grants |
-| `mcp_config.json` | Template for Claude Code `.mcp.json` (fill in placeholders) |
-| `.mcp.json` | Live Claude Code MCP configuration (with real credentials) |
+| `mcp_config.json` | Template for `.mcp.json` (placeholders for credentials) |
+| `.mcp.json` | **Generated locally by CoCo** — not committed (gitignored, contains secrets) |
 | `.claude/settings.local.json` | Claude Code local settings to enable the MCP server |
 
 ## Configuration
@@ -72,34 +72,22 @@ snowsql -a <your-account> -u <your-user> -f demodb_sales_setup.sql
 snowsql -a <your-account> -u <your-user> -f demo_mcp_oauth_setup.sql
 ```
 
-### Step 3: Get OAuth Credentials
+### Step 3: Generate `.mcp.json` using Cortex Code (CoCo)
 
-From the script output, copy `OAUTH_CLIENT_ID` and `OAUTH_CLIENT_SECRET`.
+The `.mcp.json` file contains OAuth secrets and is gitignored. Use Cortex Code to generate it automatically.
 
-### Step 4: Create `.mcp.json`
+Open CoCo in this project directory and prompt:
 
-Copy `mcp_config.json` to `.mcp.json` and replace all `{{placeholders}}`:
-
-```json
-{
-  "mcpServers": {
-    "snowflake-sales-agent": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://<ACCOUNT_LOCATOR>.snowflakecomputing.com/api/v2/databases/demo_db/schemas/sales/mcp-servers/sales_mcp_server",
-        "3334",
-        "--static-oauth-client-metadata",
-        "{\"scope\": \"session:role:SYSADMIN\"}",
-        "--static-oauth-client-info",
-        "{\"client_id\": \"<CLIENT_ID>\", \"client_secret\": \"<CLIENT_SECRET>\"}"
-      ]
-    }
-  }
-}
+```
+Generate a new .mcp.json file with a new oauth_client_secret
 ```
 
-### Step 5: Create `.claude/settings.local.json`
+CoCo will:
+1. Query `SYSTEM$SHOW_OAUTH_CLIENT_SECRETS('CLAUDE_CODE_SALES_MCP_OAUTH')` to get fresh credentials
+2. Use `mcp_config.json` as the template
+3. Write a `.mcp.json` with the real `client_id` and `client_secret` filled in
+
+### Step 4: Create `.claude/settings.local.json`
 
 ```json
 {
@@ -108,7 +96,7 @@ Copy `mcp_config.json` to `.mcp.json` and replace all `{{placeholders}}`:
 }
 ```
 
-### Step 6: Clear cache and launch
+### Step 5: Clear cache and launch
 
 ```bash
 rm -rf ~/.mcp-auth/
